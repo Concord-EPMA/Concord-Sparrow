@@ -1,5 +1,7 @@
 import pandas as pd 
 
+
+defaultGeoLabFile2 = [""]
 class Clean:
     def __init__(self, inputFileName, headerRow=0):
         currHeader = headerRow-1 if headerRow > 0 else 0
@@ -47,6 +49,8 @@ class Clean:
 
     def dropAllColumnsExcept(self, columnsToKeep=[]):
         if(columnsToKeep):
+            # add excepting for checking if 
+            # allow user to either stop during batch process or continue, log errors to a file.
             self.outputFileDf = self.outputFileDf.filter(columnsToKeep)
         else:
             return "\n'.dropAllColumnsExcept([column names here])' - Please provide column names!\n"
@@ -73,5 +77,7 @@ print("\n3)\n",example.dropAllColumnsExcept(["Mount ID", "Position on Mount", "M
 print("\n4)\n",example.dropNullRowsInColumn(["Mount ID","Position on Mount", "Mounted by"]))
 print("\n5)\n",example.dropDuplicatesInColumn(["Position on Mount"]))
 print("\n6)\n",example.displayOutput())
-#example.saveOutput("output.xlsx")
+example.saveOutput("output.xlsx")
 
+# allow for batch processing 
+# allow user to make a list of files to run batch process on! - GUI
