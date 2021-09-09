@@ -5,7 +5,7 @@
 3 - "python3 -m pip install --upgrade pip"
 4 - "pip install -r requirements.txt" 
 5 - "cd importers"
-6 - "python dataCleaner.py"
+6 - "python /importers/dataCleaner.py"
 
 ```
 
