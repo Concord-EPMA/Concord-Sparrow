@@ -15,7 +15,7 @@ find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 ```
 
 ## To do
-- [ ] allow for batch processing 
-- [ ] allow user to make a list of files to run batch process on! - GUI
+- [ ] allow batch processing 
+- [ ] allow users to make a list of files to run batch process on! - GUI
 - [ ] Schema for database  - https://sparrow-data.org/docs/motivation-and-design
 - [ ] Add more testing for data cleaner class
