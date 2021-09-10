@@ -11,47 +11,97 @@ class DataCleanerGUI(QDialog):
         # window name
         self.setWindowTitle("Geo-Lab Spreedsheet Cleaner.")
         # fixed window size (width, height)
-        self.setFixedSize(800, 800)
+        self.setFixedSize(700, 900)
         # center the GUI window
         self.frameGeometry().moveCenter(QDesktopWidget().availableGeometry().center())
 
+        self.inputFiles=set()
         self.inputFileColumns=[]
         self.outputColumns=[]
+        
+        filePicker = QPushButton("Add Input Files (.xlsx or *xls)")
+        filePicker.clicked.connect(self.chooseFiles)
 
-        self.listWidget = QListWidget()
-        buttonLayout = QVBoxLayout()
-        for text, slot in (("&Delete Column...", self.deleteColumn),
-                           ("&Sort Columns", self.listWidget.sortItems)):
+        inputFilesButtonLayout = QVBoxLayout()
+        self.listWidget1 = QListWidget()
+        for text, slot in (("&Remove File", self.removeInputFileName),
+                           ("&Sort FileNames", self.listWidget1.sortItems)):
             button = QPushButton(text)
-            buttonLayout.addWidget(button)
+            inputFilesButtonLayout.addWidget(button)
             button.clicked.connect(slot)
+        
+        columnButtonsLayout = QVBoxLayout()
+        self.listWidget2 = QListWidget()
+        for text, slot in (("&Delete Column", self.deleteColumn),
+                           ("&Sort Columns", self.listWidget2.sortItems)):
+            button = QPushButton(text)
+            columnButtonsLayout.addWidget(button)
+            button.clicked.connect(slot)
+        
+        
 
-        verticalDefaultLayout = QVBoxLayout()
-        horizontalLayout = QHBoxLayout()
-        horizontalLayout.addWidget(self.listWidget)
-        horizontalLayout.addLayout(buttonLayout)
-        verticalDefaultLayout.addLayout(horizontalLayout)
-        self.setLayout(verticalDefaultLayout)
+        defaultLayout = QVBoxLayout()
+        defaultLayout.addWidget(filePicker)
 
-    def deleteColumn(self):
-        if(self.listWidget.currentItem()):
-            row = self.listWidget.currentRow()
-            columnName = self.listWidget.currentItem().text()
+        horizontalLayout1 = QHBoxLayout()
+        horizontalLayout1.addWidget(self.listWidget1)
+        horizontalLayout1.addLayout(inputFilesButtonLayout)
+
+        horizontalLayout2 = QHBoxLayout()
+        horizontalLayout2.addWidget(self.listWidget2)
+        horizontalLayout2.addLayout(columnButtonsLayout)
+
+        defaultLayout.addLayout(horizontalLayout1)
+        defaultLayout.addLayout(horizontalLayout2)
+        self.setLayout(defaultLayout)
+
+    
+    def removeInputFileName(self):
+        if(self.listWidget1.currentItem()):
+            row = self.listWidget1.currentRow()
+            columnName = self.listWidget1.currentItem().text()
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Warning)
-            msg.setText("Are you sure you want to remove this item?")
+            msg.setText("Are you sure you want to remove this file from the list?")
             msg.setWindowTitle("Remove " + columnName)
             msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
             answer = msg.exec_()
             if answer == QMessageBox.Yes:
-                self.listWidget.takeItem(row)
+                self.listWidget1.takeItem(row)
+                self.inputFiles.remove(columnName)
+
+    def deleteColumn(self):
+        if(self.listWidget2.currentItem()):
+            row = self.listWidget2.currentRow()
+            columnName = self.listWidget2.currentItem().text()
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText("Are you sure you want to delete this column?")
+            msg.setWindowTitle("Delete " + columnName)
+            msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            answer = msg.exec_()
+            if answer == QMessageBox.Yes:
+                self.listWidget2.takeItem(row)
                 self.outputColumns.remove(columnName)
         
-    def updateColumnList(self, columnList):
-        self.listWidget.addItems(columnList)
-        self.listWidget.setCurrentRow(0)
+    def updateInputFileList(self, inputFileList):
+        self.listWidget1.clear()
+        self.listWidget1.addItems(inputFileList)
+        self.listWidget1.setCurrentRow(0)
 
-    # allows the user to save current drawing
+    def updateColumnList(self, columnList):
+        self.listWidget2.addItems(columnList)
+        self.listWidget2.setCurrentRow(0)
+
+    def chooseFiles(self):
+        filter = "XlSX(*.xlsx *.xls)"
+        file_name = QFileDialog()
+        file_name.setFileMode(QFileDialog.ExistingFiles)
+        fileNames,_ = file_name.getOpenFileNames(self, "Open files", "", filter)
+        self.inputFiles.update(fileNames)
+        self.updateInputFileList(list(self.inputFiles))        
+
+    # allows the user to save current 
     def saveToFile(self):
         userFilePath, _ = QFileDialog.getSaveFileName(self, "Save Data", "",
                                                       "XlSX(*.xlsx *.xls)")
@@ -97,7 +147,7 @@ defaultButtonStyle = "QPushButton {border-radius:5px; border: 1px solid black;" 
 self.setStyleSheet(defaultButtonStyle)
 """
 #
-# Choose input file
+# Choose input files
 # What row is the header on -  number picker
 #— Pass these into the data cleaner Class
 #- drop all empty columns?
