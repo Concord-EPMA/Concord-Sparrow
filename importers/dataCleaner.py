@@ -1,7 +1,5 @@
 import pandas as pd 
 
-
-defaultGeoLabFile2 = [""]
 class Clean:
     def __init__(self, inputFileName, headerRow=0):
         currHeader = headerRow-1 if headerRow > 0 else 0
