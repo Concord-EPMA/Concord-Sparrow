@@ -61,7 +61,7 @@ class Clean:
     
 
 
-
+"""
 excel_file = "Tephra Mount Catalog.xlsx"
 
 example = Clean(excel_file, headerRow = 7)
@@ -78,3 +78,4 @@ print("\n6)\n",example.displayOutput())
 
 example.saveOutput("output.xlsx")
 
+"""
