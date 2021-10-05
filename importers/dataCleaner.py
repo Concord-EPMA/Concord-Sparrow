@@ -62,7 +62,7 @@ class Clean:
 
 
 """
-excel_file = "Tephra Mount Catalog.xlsx"
+excel_file = "excelFiles/Tephra Mount Catalog.xlsx"
 
 example = Clean(excel_file, headerRow = 7)
 

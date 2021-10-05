@@ -19,3 +19,7 @@ find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 - [x] allow users to make a list of files to run batch process on! - GUI
 - [ ] Schema for database  - https://sparrow-data.org/docs/motivation-and-design
 - [ ] Add more testing for data cleaner class
+- [ ] Json export * https://github.com/EarthCubeGeochron/Sparrow/blob/main/backend/sparrow_tests/fixtures/large-test.json
+  - [ ] https://earthchem.org/communities/tephra/
+  - [ ] https://zenodo.org/record/4075613#.YUzSAi1h3zJ
+- [ ] Importer file https://github.com/EarthCubeGeochron/Sparrow-CU-TRaIL/blob/a9089678891d24af1c2440f575d64ac26285377a/plugins/import_reduction_sheet/importer.py#L280
