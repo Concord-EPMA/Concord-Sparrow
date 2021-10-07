@@ -10,6 +10,7 @@ PROJECT_DIR="$SPARROW_CONFIG_DIR"
 # version of the sparrow core application
 # (note, we can use SPARROW_PATH instead to tie to a specific
 #  installation if we are using a submodule, for instance.)
+SPARROW_SECRET_KEY="test"
 export SPARROW_VERSION="==2.0.0.*"
 
 export SPARROW_BACKUP_DIR="$PROJECT_DIR/database-backups"
