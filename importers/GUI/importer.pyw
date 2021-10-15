@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, \
     QDesktopWidget, QAction, QFileDialog, QMessageBox, \
+    QInputDialog, \
     QPushButton, QLabel,QListWidget,QVBoxLayout,QHBoxLayout,QDialog
 
 
@@ -21,6 +22,7 @@ class DataCleanerGUI(QDialog):
         
         filePicker = QPushButton("Add Input Files (.xlsx or *xls)")
         filePicker.clicked.connect(self.chooseFiles)
+        headerRow = QInputDialog("Enter the header row: ")
 
         inputFilesButtonLayout = QVBoxLayout()
         self.listWidget1 = QListWidget()
@@ -42,6 +44,8 @@ class DataCleanerGUI(QDialog):
 
         defaultLayout = QVBoxLayout()
         defaultLayout.addWidget(filePicker)
+        defaultLayout.addWidget(headerRow)
+        
 
         horizontalLayout1 = QHBoxLayout()
         horizontalLayout1.addWidget(self.listWidget1)
@@ -54,6 +58,7 @@ class DataCleanerGUI(QDialog):
         defaultLayout.addLayout(horizontalLayout1)
         defaultLayout.addLayout(horizontalLayout2)
         self.setLayout(defaultLayout)
+        
 
     
     def removeInputFileName(self):
