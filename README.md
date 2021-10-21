@@ -11,13 +11,12 @@
 ## Steps to get sparrow working
 ```
 in your terminal
-1 - curl -o get-sparrow.sh https://raw.githubusercontent.com/EarthCubeGeochron/Sparrow/HEAD/get-sparrow.sh
-2 - sudo sh get-sparrow.sh
-3 - make sure Docker is currently running with sufficient memory allocation
-4 - make sure you're in the sparrow folder
-5 - you should be able to run "sparrow" with no errors
-6 - SPARROW_SECRET_KEY=TemporaryKey sparrow up
-7 - go to localhost:5002
+1 - bash -c "$(curl -fsSL https://raw.githubusercontent.com/EarthCubeGeochron/Sparrow/HEAD/get-sparrow.sh)"
+2 - make sure Docker is currently running with sufficient memory allocation
+3 - make sure you're in the sparrow folder
+4 - you should be able to run "sparrow" with no errors
+5 - SPARROW_SECRET_KEY=TemporaryKey sparrow up
+6 - go to localhost:5002
 ```
 
 > Clearing python cache in directory
