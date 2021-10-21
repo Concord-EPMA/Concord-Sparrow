@@ -6,7 +6,18 @@
 4 - "pip install -r requirements.txt" 
 5 - "cd importers"
 6 - "python /importers/dataCleaner.py"
+```
 
+## Steps to get sparrow working
+```
+in your terminal
+1 - curl -o get-sparrow.sh https://raw.githubusercontent.com/EarthCubeGeochron/Sparrow/HEAD/get-sparrow.sh
+2 - sudo sh get-sparrow.sh
+3 - make sure Docker is currently running with sufficient memory allocation
+4 - make sure you're in the sparrow folder
+5 - you should be able to run "sparrow" with no errors
+6 - SPARROW_SECRET_KEY=TemporaryKey sparrow up
+7 - go to localhost:5002
 ```
 
 > Clearing python cache in directory
