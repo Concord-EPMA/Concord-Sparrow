@@ -1,6 +1,7 @@
 # Schemas (db.load_data)
 
 **project**
+```
     tags_tag               - tags schema
     session                - session schema
     instrument_session     - instrument session schema
@@ -14,6 +15,7 @@
     location_name_autoset  - boolean 
     location               - geometry 
     description            - string
+```
 
 **sample**
     publication            - publication schema 
