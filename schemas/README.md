@@ -1,7 +1,7 @@
 # Schemas 
 (db.load_data)
 
-**project**
+[project](project.json)
 ```
     tags_tag               - tags schema
     session                - session schema
@@ -18,7 +18,7 @@
     description            - string
 ```
 
-**sample**
+[sample](sample.json)
 ```
     publication            - publication schema 
     project                - project schema 
@@ -39,7 +39,7 @@
     depth                  - decimal
 ```
 
-**session**
+[session](session.json)
 ```
     date_precision         - Related (could be integer)
     uuid                   - uuid 
@@ -60,7 +60,7 @@
     project                - project schema
 ```
 
-**analysis**
+[analysis](analysis.json)
 ```
 	tags_tag               - tags schema
 	data 				   - JSON
@@ -80,7 +80,7 @@
     is_interpreted 	       - Boolean
 ```
 
-**datum**
+[datum](datum.json)
 ```
 	tags_tag               - tags schema
     Is_bad				   - Boolean
@@ -91,7 +91,7 @@
     type 			       - Datum Type Schema
 ```
 
-**data_file**
+[data_file](data_file.json)
 ```
 	file_hash              - UUID
     type				   - Related
@@ -102,7 +102,7 @@
     file_path 			   - String
 ```
 
-**sample_geo_entity**
+[sample_geo_entity](sample_geo_entity.json)
 ```
     sample  			   - Sample Schema
     geo_entity	 		   - Geo Entity Schema
@@ -111,7 +111,7 @@
     ref_datum	 		   - entity reference Schema
 ```
 
-**geo_entity**
+[geo_entity](geo_entity.json)
 ```
 	description 		   - String 
     sample_geo_entity  	   - Sample Geo Entity Schema
@@ -123,7 +123,7 @@
     ref_url			       - String 
 ```
 
-**material**
+[material](material.json)
 ```
 	type_of	 		       - material Schema
     id*	 			       - String 
@@ -131,26 +131,26 @@
     description			   - String 
 ```
 
-**instrument**
+[instrument](instrument.json)
 ```
 	description			   - String 
     name*	 			   - String 
 ```
 
-**method**
+[method](method.json)
 ```
 	description			   - String 
     authority			   - String 
     id*	 			       - String 
 ```
 
-**researcher**
+[researcher](researcher.json)
 ```
     name*	 			   - String
     orcid				   - String 
 ```
 
-**publication**
+[publication](publication.json)
 ```
     doi				       - String 
     author				   - String 
@@ -161,26 +161,26 @@
     year	 			   - String 
 ```
 
-**tag**
+[tag](tag.json)
 ```
 	color				   - String 
     name				   - String 
     description			   - String 
 ```
 
-**attribute**
+[attribute](attribute.json)
 ```
     doi*				   - String 
     parameter*			   - Parameter Schema 
 ```
 
-**authority**
+[authority](authority.json)
 ```
 	value*				   - String 
     parameter*			   - Parameter Schema 
 ```
 
-**datum_type**
+[datum_type](datum_type.json)
 ```
 	description			   - String 
 	is_computed			   - Boolean 
@@ -191,14 +191,14 @@
     parameter*			   - Parameter Schema 
 ```
 
-**unit**
+[unit](unit.json)
 ```
     description			   - String 
     authority			   - String 
     id*				       - String 
 ```
 
-**error_metric**
+[error_metric](error_metric.json)
 ```
     description			    - String 
     authority			    - String 
