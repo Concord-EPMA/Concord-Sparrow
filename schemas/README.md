@@ -2,7 +2,7 @@
 (db.load_data)
 
 ### [project](project.json)
-- tags_tag               - tags schema)
+- tags_tag               [ (tags schema) ](#tag)
 - session                - session schema)
 - instrument_session     - instrument session schema)
 - publication            - publication schema )
