@@ -40,7 +40,7 @@
 
 **session**
 ```
-	date_precision         - Related (could be integer)
+    date_precision         - Related (could be integer)
     uuid                   - uuid 
     target                 - Related
     instrument_session     - instrument schema
