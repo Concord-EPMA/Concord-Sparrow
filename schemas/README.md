@@ -18,6 +18,7 @@
 ```
 
 **sample**
+```
     publication            - publication schema 
     project                - project schema 
     uuid                   - uuid 
@@ -35,8 +36,10 @@
     location_precision     - integer
     location_name_autoset  - boolean 
     depth                  - decimal
+```
 
 **session**
+```
 	date_precision         - Related (could be integer)
     uuid                   - uuid 
     target                 - Related
@@ -54,8 +57,10 @@
     publication            - publication schema 
     analysis               - analysis schema
     project                - project schema
+```
 
 **analysis**
+```
 	tags_tag               - tags schema
 	data 				   - JSON
     is_bad 			       - Boolean
@@ -72,9 +77,10 @@
     attribute              - attribute schema 
     standard_sample		   - Related 
     is_interpreted 	       - Boolean
-
+```
 
 **datum**
+```
 	tags_tag               - tags schema
     Is_bad				   - Boolean
     is_accepted 		   - Boolean
@@ -82,9 +88,10 @@
     value 			       - Decimal (required)
     error 			       - Decimal
     type 			       - Datum Type Schema
-
+```
 
 **data_file**
+```
 	file_hash              - UUID
     type				   - Related
     data_file_link  	   - DataFileLink Schema
@@ -92,15 +99,19 @@
     file_mtime 			   - DateTime
     basename 			   - String
     file_path 			   - String
+```
 
 **sample_geo_entity**
+```
     sample  			   - Sample Schema
     geo_entity	 		   - Geo Entity Schema
     ref_unit	  		   - Unit Schema
     ref_distance		   - Decimal
     ref_datum	 		   - entity reference Schema
+```
 
 **geo_entity**
+```
 	description 		   - String 
     sample_geo_entity  	   - Sample Geo Entity Schema
     type	 			   - Entity type Schema
@@ -109,28 +120,37 @@
     name*	 			   - String
     authority 			   - String 
     ref_url			       - String 
-
+```
 
 **material**
+```
 	type_of	 		       - material Schema
     id*	 			       - String 
     authority 			   - String 
     description			   - String 
+```
 
 **instrument**
+```
 	description			   - String 
     name*	 			   - String 
+```
 
 **method**
+```
 	description			   - String 
     authority			   - String 
     id*	 			       - String 
+```
 
 **researcher**
+```
     name*	 			   - String
     orcid				   - String 
+```
 
 **publication**
+```
     doi				       - String 
     author				   - String 
     data	 			   - JSON 
@@ -138,21 +158,29 @@
     link				   - String 
     journal	 			   - String 
     year	 			   - String 
+```
 
 **tag**
+```
 	color				   - String 
     name				   - String 
     description			   - String 
+```
 
 **attribute**
+```
     doi*				   - String 
     parameter*			   - Parameter Schema 
+```
 
 **authority**
+```
 	value*				   - String 
     parameter*			   - Parameter Schema 
+```
 
 **datum_type**
+```
 	description			   - String 
 	is_computed			   - Boolean 
 	error_unit			   - unit Schema 
@@ -160,17 +188,21 @@
 	error_metric		   - error metric Schema 
     is_interpreted		   - Boolean
     parameter*			   - Parameter Schema 
+```
 
 **unit**
+```
     description			   - String 
     authority			   - String 
     id*				       - String 
- 
+```
+
 **error_metric**
+```
     description			    - String 
     authority			    - String 
     id*				        - String
-
+```
 
 
 
