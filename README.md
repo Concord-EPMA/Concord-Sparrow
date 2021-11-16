@@ -12,16 +12,11 @@
 ```
 in your terminal
 1 - bash -c "$(curl -fsSL https://raw.githubusercontent.com/EarthCubeGeochron/Sparrow/HEAD/get-sparrow.sh)"
-2 - make sure Docker is currently running with sufficient memory allocation
+2 - make sure Docker has been updated and is currently running with sufficient memory allocation(>=4GB)
 3 - make sure you're in the sparrow folder
 4 - you should be able to run "sparrow" with no errors
 5 - SPARROW_SECRET_KEY=TemporaryKey sparrow up
 6 - go to localhost:5002
-```
-
-> Clearing python cache in directory
-```
-find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 ```
 
 ## To do
@@ -34,4 +29,16 @@ find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
   - [ ] https://zenodo.org/record/4075613#.YUzSAi1h3zJ
 - [ ] Importer file https://github.com/EarthCubeGeochron/Sparrow-CU-TRaIL/blob/a9089678891d24af1c2440f575d64ac26285377a/plugins/import_reduction_sheet/importer.py#L280
 
+- [] samples schema json - StraboSpot_output file in excel files dir
+  - sample label as sample name
+
+importer schemas
+- [ ] project
+- [ ] sample
+- [ ] session 
+- [ ] instrument
+- [ ] analysis
+- [ ] datum
+- [ ] datafile
+- [ ] sample
 

@@ -1,4 +1,5 @@
 import pandas as pd 
+import json 
 
 class Clean:
     def __init__(self, inputFileName, headerRow=0):
@@ -28,7 +29,7 @@ class Clean:
             return ("\n\nAn error occurred trying to delete specified rows!!\n\n")
         """
 
-    def dropDuplicatesInColumn(self, columnNames=[]):
+    def dropDuplicatesInColumn(self, columnNames):
         if(columnNames):
             try:
                 for columnName in columnNames:
@@ -39,29 +40,34 @@ class Clean:
         else:
             return "\n'.dropDuplicatesInColumn([column names here])' - Please provide column names!\n"
 
-    def dropNullRowsInColumn(self, columnNames=[]):
+    def dropNullRowsInColumn(self, columnNames):
         if(columnNames):
             self.outputFileDf.dropna(subset=columnNames, inplace= True )
         else:
             return "\n'.dropNullRowsInColumn([column names here])' - Please provide column names!\n"
 
-    def dropAllColumnsExcept(self, columnsToKeep=[]):
+    def dropAllColumnsExcept(self, columnsToKeep):
         if(columnsToKeep):
             # add excepting for checking if 
             # allow user to either stop during batch process or continue, log errors to a file.
             self.outputFileDf = self.outputFileDf.filter(columnsToKeep)
         else:
-            return "\n'.dropAllColumnsExcept([column names here])' - Please provide column names!\n"
+            print("\n'.dropAllColumnsExcept([column names here])' - Please provide column names!\n")
     
     def displayOutput(self):
         return (self.outputFileDf)
 
     def saveOutput(self, outputFileName):
-        self.outputFileDf.to_excel(outputFileName,index = False, header=True)
+        # orient "index" - "row"{col: value}
+        parsed = json.loads(self.outputFileDf.to_json(orient="index"))
+        with open(outputFileName, 'a') as outputFile:
+            json.dump(parsed,outputFile, indent=4)
+        
     
 
 
 """
+
 excel_file = "excelFiles/Tephra Mount Catalog.xlsx"
 
 example = Clean(excel_file, headerRow = 7)

@@ -1,0 +1,42 @@
+{
+    "955": {
+        "Mount ID": "HA",
+        "Position on Mount": "A",
+        "Mounted by": "S. Kuehn"
+    },
+    "956": {
+        "Mount ID": "HA",
+        "Position on Mount": "B",
+        "Mounted by": "S. Kuehn"
+    },
+    "957": {
+        "Mount ID": "HA",
+        "Position on Mount": "C",
+        "Mounted by": "S. Kuehn"
+    },
+    "961": {
+        "Mount ID": "HC",
+        "Position on Mount": "D",
+        "Mounted by": "S. Kuehn"
+    },
+    "965": {
+        "Mount ID": "HE",
+        "Position on Mount": 1,
+        "Mounted by": "S. Kuehn"
+    },
+    "966": {
+        "Mount ID": "HE",
+        "Position on Mount": 2,
+        "Mounted by": "S. Kuehn"
+    },
+    "967": {
+        "Mount ID": "HE",
+        "Position on Mount": 3,
+        "Mounted by": "S. Kuehn"
+    },
+    "968": {
+        "Mount ID": "HE",
+        "Position on Mount": 4,
+        "Mounted by": "S. Kuehn"
+    }
+}

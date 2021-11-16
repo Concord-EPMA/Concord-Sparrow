@@ -1,5 +1,6 @@
 from dataCleaner import Clean
 import concurrent.futures
+from datetime import date
 
 fileNameArr  = ["/Users/vic8or/Desktop/currentProjects/sparrow/excelFiles/Tephra Mount Catalog.xlsx"]
 headerRowNum = 7
@@ -10,30 +11,22 @@ noDuplicatesInColumns = ["Position on Mount"]
 presets,dropEmptyColumns, dropEmptyRows = False, True, True
 
 def processData(fileName):
-    print("start")
     try:
         instance = Clean(fileName, headerRow = headerRowNum)
-        print("1")
         if (dropEmptyColumns):
-            print("2")
             instance.dropEmptyColumns()
-        if ((len(fileNameArr)==1 and presets==False) or presets):
-            print("3")
+        if ((len(fileNameArr)==1 and not presets) or presets):
             columnListToDisplay = instance.displayColumnNames()
         if (dropEmptyRows):
             instance.dropEmptyRows()
-            print("4")
         if (unselectedColumns):
-            instace.dropAllColumnsExcept(unselectedColumns)
-            print("5")
+            instance.dropAllColumnsExcept(unselectedColumns)
         if (noNullRowsInColumns):
-            print("6")
-            instace.dropNullRowsInColumn(columnNames=noNullRowsInColumns)
+            instance.dropNullRowsInColumn(noNullRowsInColumns)
         if (noDuplicatesInColumns):
-            instace.dropDuplicatesInColumn(columnNames=noDuplicatesInColumns)
-            print("7")
+            instance.dropDuplicatesInColumn(noDuplicatesInColumns)
         
-        print("\n6)\n",instance.displayOutput())
+        print("Output Dataframe: \n\n",instance.displayOutput())
 
         outputFileName = fileName
         if ".xlsx" in outputFileName:
@@ -41,7 +34,9 @@ def processData(fileName):
         elif(".csv" in outputFileName):
             outputFileName = outputFileName.strip(".csv")
 
-        outputFileName +=  "CLEANED.xlsx" 
+        fileExtension  = str(date.today()) +"_clean.json" 
+        outputFileName +=  fileExtension
+        print("-->",outputFileName)
         instance.saveOutput(outputFileName)
     except:
         with open(file, "w+") as logFile:
