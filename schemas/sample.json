@@ -1,0 +1,44 @@
+{
+    "publication": [
+      3,
+      7,
+      2
+    ],
+    "project": [
+      3,
+      7,
+      2
+    ],
+    "material": "basalt",
+    "elevation": 2.6,
+    "igsn": "BGRB5054RX05201",
+    "tags_tag": [
+      3,
+      7,
+      2
+    ],
+    "location_name": "Pilbara Craton",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        180,
+        90
+      ]
+    },
+    "session": [
+      3,
+      7,
+      2
+    ],
+    "embargo_date": "2018-03-23T19:53:56",
+    "member_of": 13,
+    "name": "AUP19-221",
+    "sample_geo_entity": [
+      3,
+      7,
+      2
+    ],
+    "location_precision": 4,
+    "location_name_autoset": true,
+    "depth": 2.6
+  }

@@ -1,0 +1,45 @@
+{
+    "tags_tag": [
+      3,
+      7,
+      2
+    ],
+    "session": [
+      3,
+      7,
+      2
+    ],
+    "instrument_session": [
+      3,
+      7,
+      2
+    ],
+    "publication": [
+      3,
+      7,
+      2
+    ],
+    "sample": [
+      3,
+      7,
+      2
+    ],
+    "embargo_date": "2018-03-23T19:53:56",
+    "location_precision": 4,
+    "researcher": [
+      3,
+      7,
+      2
+    ],
+    "location_name": "Pilbara Craton",
+    "name": "Pilbara Craton 2019",
+    "location_name_autoset": true,
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        180,
+        90
+      ]
+    },
+    "description": "2019 Piblara Craton Fieldwork"
+  }
