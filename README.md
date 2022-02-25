@@ -44,6 +44,7 @@ importer schemas
 
 
 # Deploying Sparrow on a Digital Ocean droplet
+- Go to billing and add PROMO CODE : ACTIVATE60
 - Droplet configuration/type : Basic - Shared CPU - 4 vCPUs - 8 GB - 160 GB - 5 TB - $40/month
 - Open the console online and enter the following commands
 
