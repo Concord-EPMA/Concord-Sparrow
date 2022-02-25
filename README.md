@@ -19,7 +19,13 @@ in your terminal
 6 - go to localhost:5002
 ```
 
-## To do
+## Priority
+- [] Add the new tables and fields to the database; Document these carefully; Write a script which would re-create these on a new Sparrow installation
+- [] Start putting the sample catalog and related things in Sparrow (try to make this as easy as copy and paste)
+- [] Switch from using Google sheets to using Sparrow directly for #2 - This will require setting up an user interface to the DB and setting up an importer for sample information exported from StraboSpot
+- [] Start developing the Sparrow website
+- [] Start importing other kinds of data, linking images/photos, etc.
+
 - [ ] allow batch processing 
 - [x] allow users to make a list of files to run batch process on! - GUI
 - [ ] Schema for database  - https://sparrow-data.org/docs/motivation-and-design
