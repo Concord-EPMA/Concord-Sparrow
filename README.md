@@ -12,10 +12,10 @@
 ```
 in your terminal
 1 - bash -c "$(curl -fsSL https://raw.githubusercontent.com/EarthCubeGeochron/Sparrow/HEAD/get-sparrow.sh)"
-2 - make sure Docker has been updated and is currently running with sufficient memory allocation(>=4GB)
-3 - make sure you're in the sparrow folder
+2 - ensure Docker has been updated and is currently running with sufficient memory allocation(>=4GB)
+3 - ensure you're in the sparrow folder
 4 - you should be able to run "sparrow" with no errors
-5 - SPARROW_SECRET_KEY=TemporaryKey sparrow up
+5 - run `SPARROW_SECRET_KEY=TemporaryKey sparrow up`
 6 - go to localhost:5002
 ```
 
@@ -56,10 +56,28 @@ importer schemas
 - Droplet configuration/type : Basic - Shared CPU - 4 vCPUs - 8 GB - 160 GB - 5 TB - $40/month
 - Open the console online and enter the following commands
 
-```
-bash -c "$(curl -fsSL https://sparrow-data.org/get-sparrow.sh)"
+```shell
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Concord-EPMA/Concord-Sparrow/main/vm-setup.sh)"
 SPARROW_SECRET_KEY=TemporaryKey sparrow up
 ```
 
+to connect to sparrow database:
+
+- running locally
+  
+  ```shell
+    psql --username=postgres --host=localhost --port=54321 --dbname=sparrow
+  ```
+
+- running remotely
+  
+  ```shell
+  psql --username=[your-server-login] --host=[your-server-url]  --port=54321 --dbname=sparrow
+
+  Private Key: SSH-key for your server
+  ```
+
 - [ipv4 address from droplet dashboard]:5002  - frontend port number (5002)
   - i.e '157.245.92.59:5002'
+
+for more info visit - ![sparrow database docs](https://sparrow-data.org/docs/database)
