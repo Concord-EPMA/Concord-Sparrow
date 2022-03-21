@@ -83,9 +83,16 @@ to connect to sparrow database:
 for more info visit - ![sparrow database docs](https://sparrow-data.org/docs/database)
 
 
-##Ruuning Flask front end
+# Running Flask Frontend
+
 - Install Flask
+
   - Set up a local programming environment for python: https://www.digitalocean.com/community/tutorial_series/how-to-install-and-set-up-a-local-programming-environment-for-python-3
-  - Activate the local environment: ```shell source 't_env/bin/activate ```
-  - Run this command : 
+  
+  - Activate the local environment:
+   
+   ``` source 't_env/bin/activate ```
+   
+  - Run this command: 
+  
   ```shell source 'pip install flask ```
