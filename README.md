@@ -91,8 +91,8 @@ for more info visit - ![sparrow database docs](https://sparrow-data.org/docs/dat
   
   - Activate the local environment:
    
-   ``` source 't_env/bin/activate ```
+   ``` source t_env/bin/activate ```
    
   - Run this command: 
   
-  ```shell source 'pip install flask ```
+  ``` source pip install flask ```
