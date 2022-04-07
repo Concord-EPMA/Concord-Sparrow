@@ -52,6 +52,17 @@ def getTableNames():
         return tableNames
     return None
 
+def createTable():
+    dbConnected = connectToLocalDB()
+    if dbConnected:
+        cur = dbConnected.cursor()
+        cur.execute("SELECT tablename FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND  schemaname != 'information_schema';")
+        tableNames = cur.fetchall()
+        cur.close()
+        dbConnected.close()
+        return tableNames
+    return None
+
 def getTable(name):
     dbConnected = connectToLocalDB()
     if dbConnected:
@@ -62,3 +73,18 @@ def getTable(name):
         dbConnected.close()
         return tableNames
     return None
+
+# tephra 
+"""
+data types - int, decimal, text, timestampz
+
+multiple columns for time/date precision
+
+sparrow users
+
+
+key features
+- working on creating database tables
+- export table schema
+
+"""
