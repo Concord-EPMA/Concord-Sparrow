@@ -14,6 +14,10 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 bash -c "$(curl -fsSL https://sparrow-data.org/get-sparrow.sh)"
 
+wget "https://raw.githubusercontent.com/Concord-EPMA/Concord-Sparrow/main/sparrow-config.sh"
+
 sparrow
 
 echo "Done installing Docker and Sparrow!"	
+
+SELECT * FROM information_schema.columns WHERE table_schema = 'public' AND table_name   = 'user';
