@@ -19,5 +19,3 @@ wget "https://raw.githubusercontent.com/Concord-EPMA/Concord-Sparrow/main/sparro
 sparrow
 
 echo "Done installing Docker and Sparrow!"	
-
-SELECT * FROM information_schema.columns WHERE table_schema = 'public' AND table_name   = 'user';
