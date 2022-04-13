@@ -1,3 +1,9 @@
+https://github.com/EarthCubeGeochron/Sparrow/blob/78aa58dd4f1fbcd7faaba3cb464f17c9dfec2be1/backend/sparrow/auth/api.py
+
+https://github.com/EarthCubeGeochron/Sparrow/blob/78aa58dd4f1fbcd7faaba3cb464f17c9dfec2be1/backend/sparrow/users/__init__.py#L5
+
+https://github.com/Idzikowski-Casey/Sparrow-WiscAr-Example/blob/master/site-content/backend-plugins/__init__.py
+
 # Setup for running importer scripts & GUI (MacOS)
 ```
 1 - "python3 -m venv env"

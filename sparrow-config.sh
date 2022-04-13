@@ -3,11 +3,12 @@
 # unset GREP_OPTIONS
 # Configures environment for LaserChron lab
 
-export SPARROW_ENV="production"
+# export SPARROW_ENV="production"
+export SPARROW_ENV="development"
 export SPARROW_SECRET_KEY="TemporaryKey"
 
 # # SPARROW_CONFIG_DIR always points to the sourced configuration
-# PROJECT_DIR="$SPARROW_CONFIG_DIR"
+PROJECT_DIR="$SPARROW_CONFIG_DIR"
 
 # # SPARROW_VERSION makes sure we are using a compatible
 # # version of the sparrow core application
@@ -24,7 +25,7 @@ export SPARROW_LAB_NAME="Concord University EMPA"
 # export SPARROW_SITE_CONTENT="$PROJECT_DIR/site-content"
 export SPARROW_HTTP_PORT=5002
 
-# export SPARROW_PLUGIN_DIR="$PROJECT_DIR/plugins"
+export SPARROW_PLUGIN_DIR="$PROJECT_DIR/plugins/backend-plugins"
 
 # # This only works in production
 # export SPARROW_DOMAIN="microanalysis.concord.edu"

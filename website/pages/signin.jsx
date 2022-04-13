@@ -7,34 +7,17 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 
-const SmallDiv = styled.div(() => [
-  tw`relative w-full text-center text-neutral-5 after:(right-0) before:(left-0)`,
-  css`
-    &:before,
-    &:after {
-      ${tw`inline-block absolute 
-      top-1/2 content[""] 
-      border-bottom[1px solid rgba(var(--neutral-4))]
-      width[calc(50% - 4em)]
-      `};
-    }
-    ,
-    > small {
-      ${tw`inline-block`}
-    }
-  `,
-])
-
 const schema = yup.object().shape({
   email: yup
     .string()
-    .email("Please enter a valid email address")
-    .required("Email is required!")
+    .email("Please enter a valid email address!")
+    .required("No email provided!")
     .min(6, "Email should be between 5 and 50 characters")
     .max(50),
+  password: yup.string().required("No password provided!"),
 })
 
-export default function SignUp() {
+export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
 
   const {
@@ -54,61 +37,62 @@ export default function SignUp() {
   }
 
   return (
-    <MarketingContainer title="Sign up" footer noHeaderNav>
+    <MarketingContainer title="Log in" footer noHeaderNav>
       <main
         tw="min-h-screen max-w-screen-sm w-full
           mx-auto px-4 pb-28 md:(px-8) flex
           flex-col items-center justify-center"
       >
-        <h1 tw="text-3xl sm:text-5xl  text-center pt-10 pb-0">
-          Create your free account
-        </h1>
-        <div tw="px-2 sm:px-16 space-y-5">
-          <div tw="mt-8">
-            Full width buttons with OAuth from different sign-up buttons
-          </div>
-          <SmallDiv>
-            <small>Or use your email</small>
-          </SmallDiv>
-        </div>
-
+        <h1 tw="text-3xl sm:text-5xl  text-center pt-10 mb-8 pb-0">Log In</h1>
         <form
           tw="space-y-5 text-left
               px-2 sm:px-16
               pt-5 pb-16
-              w-full
-              "
+              w-full"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div>
             <Input
               type="email"
-              placeholder="Email Address"
-              aria-label="Email address"
+              placeholder="email Address"
+              aria-label="email address"
               autoComplete="email"
               autoCapitalize="none"
               maxLength="50"
               {...register("email")}
-              error={!!errors?.email}
+              error={errors?.email}
               noLabel
               required
             />
             <small tw="text-red-700">{errors?.email?.message}</small>
           </div>
+          <div>
+            <Input
+              type="password"
+              placeholder="password"
+              aria-label="password"
+              autoCapitalize="none"
+              {...register("password")}
+              error={errors?.password}
+              noLabel
+              required
+            />
+            <small tw="text-red-700">{errors?.password?.password}</small>
+          </div>
           <Button
             type="submit"
             tw="flex items-center justify-center"
-            disabled={!!isLoading}
+            disabled={isLoading}
             variant="primary"
             isLarge
           >
-            {isLoading ? <LoadingCircle /> : "Create Account"}
+            {isLoading ? <LoadingCircle /> : "Continue with Email"}
           </Button>
           <div tw="flex flex-col items-center justify-center">
-            Already have an account?
-            <Link href="/signin" passHref>
+            Don't have an account?
+            <Link href="/signup" passHref>
               <StyledLink arrow="right" variant="blue" underline>
-                Signin
+                Sign up
               </StyledLink>
             </Link>
           </div>
@@ -118,4 +102,4 @@ export default function SignUp() {
   )
 }
 
-SignUp.theme = "light"
+Login.theme = "light"

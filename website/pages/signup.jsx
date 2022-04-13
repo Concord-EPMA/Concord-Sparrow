@@ -7,24 +7,6 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 
-const SmallDiv = styled.div(() => [
-  tw`relative w-full text-center text-neutral-5 after:(right-0) before:(left-0)`,
-  css`
-    &:before,
-    &:after {
-      ${tw`inline-block absolute 
-      top-1/2 content[""] 
-      border-bottom[1px solid rgba(var(--neutral-4))]
-      width[calc(50% - 4em)]
-      `};
-    }
-    ,
-    > small {
-      ${tw`inline-block`}
-    }
-  `,
-])
-
 const schema = yup.object().shape({
   email: yup
     .string()
@@ -32,9 +14,16 @@ const schema = yup.object().shape({
     .required("Email is required!")
     .min(6, "Email should be between 5 and 50 characters")
     .max(50),
+  password: yup
+    .string()
+    .required("No password provided!")
+    .min(5, "Please use a longer password!")
+    .matches(/^(?=.{6,})/, "Must Contain 6 Characters")
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])/, "Must Contain One Uppercase, One Lowercase")
+    .matches(/^(?=.*[!@#\$%\^&\*])/, "Must Contain One Special Case Character"),
 })
 
-export default function Login() {
+export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false)
 
   const {
@@ -54,44 +43,49 @@ export default function Login() {
   }
 
   return (
-    <MarketingContainer title="Log in" footer noHeaderNav>
+    <MarketingContainer title="Sign up" footer noHeaderNav>
       <main
         tw="min-h-screen max-w-screen-sm w-full
           mx-auto px-4 pb-28 md:(px-8) flex
           flex-col items-center justify-center"
       >
-        <h1 tw="text-3xl sm:text-5xl  text-center pt-10 pb-0">Log In</h1>
-        <div tw="px-2 sm:px-16 space-y-5">
-          <div tw="mt-8">
-            Full width buttons with OAuth from different sign-up buttons
-          </div>
-
-          <SmallDiv>
-            <small>Or use your email</small>
-          </SmallDiv>
-        </div>
+        <h1 tw="text-3xl sm:text-5xl  text-center pt-10 mb-8 pb-0">Create an account</h1>
 
         <form
           tw="space-y-5 text-left
               px-2 sm:px-16
               pt-5 pb-16
-              w-full"
+              w-full
+              "
           onSubmit={handleSubmit(onSubmit)}
         >
           <div>
             <Input
               type="email"
-              placeholder="Email Address"
-              aria-label="Email address"
+              placeholder="email Address"
+              aria-label="email address"
               autoComplete="email"
               autoCapitalize="none"
               maxLength="50"
               {...register("email")}
-              error={!!errors?.email}
+              error={errors?.email}
               noLabel
               required
             />
             <small tw="text-red-700">{errors?.email?.message}</small>
+          </div>
+          <div>
+            <Input
+              type="password"
+              placeholder="password"
+              aria-label="password"
+              autoCapitalize="none"
+              {...register("password")}
+              error={errors?.password}
+              noLabel
+              required
+            />
+            <small tw="text-red-700">{errors?.password?.password}</small>
           </div>
           <Button
             type="submit"
@@ -100,13 +94,13 @@ export default function Login() {
             variant="primary"
             isLarge
           >
-            {isLoading ? <LoadingCircle /> : "Continue with Email"}
+            {isLoading ? <LoadingCircle /> : "Create Account"}
           </Button>
           <div tw="flex flex-col items-center justify-center">
-            Don't have an account?
-            <Link href="/signup" passHref>
+            Already have an account?
+            <Link href="/signin" passHref>
               <StyledLink arrow="right" variant="blue" underline>
-                Sign up
+                Signin
               </StyledLink>
             </Link>
           </div>
@@ -116,4 +110,4 @@ export default function Login() {
   )
 }
 
-Login.theme = "light"
+SignUp.theme = "light"
