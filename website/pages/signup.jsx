@@ -6,6 +6,7 @@ import { Input, Button, LoadingCircle, StyledLink } from "@components"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
+import { useRouter } from "next/router"
 
 const schema = yup.object().shape({
   email: yup
@@ -25,6 +26,7 @@ const schema = yup.object().shape({
 
 export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const {
     register,
@@ -36,9 +38,9 @@ export default function SignUp() {
   })
   const onSubmit = (data) => {
     setIsLoading(true)
-    console.log(data)
     setTimeout(() => {
       setIsLoading(false)
+      router.push("/")
     }, 1000)
   }
 
@@ -85,13 +87,12 @@ export default function SignUp() {
               noLabel
               required
             />
-            <small tw="text-red-700">{errors?.password?.password}</small>
+            <small tw="text-red-700">{errors?.password?.message}</small>
           </div>
           <Button
             type="submit"
             tw="flex items-center justify-center"
             disabled={!!isLoading}
-            variant="primary"
             isLarge
           >
             {isLoading ? <LoadingCircle /> : "Create Account"}

@@ -18,11 +18,7 @@ export default function NotFound() {
           Kindly double check the current URL.
         </small>
         <Link href="/" passHref>
-          <Button
-            as="a"
-            tw="p-4 w-64 font-extrabold mx-auto tracking-wide"
-            variant="primary"
-          >
+          <Button as="a" tw="p-4 w-64 font-extrabold mx-auto tracking-wide">
             Back to Homepage
           </Button>
         </Link>

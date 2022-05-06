@@ -1,104 +1,46 @@
-https://github.com/EarthCubeGeochron/Sparrow/blob/78aa58dd4f1fbcd7faaba3cb464f17c9dfec2be1/backend/sparrow/auth/api.py
+# Concord University EMPA
 
-https://github.com/EarthCubeGeochron/Sparrow/blob/78aa58dd4f1fbcd7faaba3cb464f17c9dfec2be1/backend/sparrow/users/__init__.py#L5
+- [Concord Tephra Lab Workflow Diagram](https://drive.google.com/file/d/1fGNQF_zcY1HmuG50Mj9d0ZvniA3EVQET/view?ts=613121e4)
 
-https://github.com/Idzikowski-Casey/Sparrow-WiscAr-Example/blob/master/site-content/backend-plugins/__init__.py
+## Getting Started
 
-# Setup for running importer scripts & GUI (MacOS)
-```
-1 - "python3 -m venv env"
-2 - "source env/bin/activate"
-3 - "python3 -m pip install --upgrade pip"
-4 - "pip install -r requirements.txt" 
-5 - "cd importers"
-6 - "python /importers/dataCleaner.py"
-```
+- clone this repository in a folder
+  - `git clone https://github.com/Concord-EPMA/Concord-Sparrow/tree/main/website .`
 
-## Steps to get sparrow working
-```
-in your terminal
-1 - bash -c "$(curl -fsSL https://raw.githubusercontent.com/EarthCubeGeochron/Sparrow/HEAD/get-sparrow.sh)"
-2 - ensure Docker has been updated and is currently running with sufficient memory allocation(>=4GB)
-3 - ensure you're in the sparrow folder
-4 - you should be able to run "sparrow" with no errors
-5 - run `SPARROW_SECRET_KEY=TemporaryKey sparrow up`
-6 - go to localhost:5002
-```
+### How to get sparrow working locally
 
-## Priority
-- [] Add the new tables and fields to the database; Document these carefully; Write a script which would re-create these on a new Sparrow installation
-- [] Start putting the sample catalog and related things in Sparrow (try to make this as easy as copy and paste)
-- [] Switch from using Google sheets to using Sparrow directly for #2 - This will require setting up an user interface to the DB and setting up an importer for sample information exported from StraboSpot
-- [] Start developing the Sparrow website
-- [] Start importing other kinds of data, linking images/photos, etc.
+1. `bash -c "$(curl -fsSL https://raw.githubusercontent.com/EarthCubeGeochron/Sparrow/HEAD/get-sparrow.sh)"`
+2. ensure Docker has been updated and is currently running with sufficient memory allocation(>=4GB)
+3. you should be able to run `sparrow` with no errors
+4. run `sparrow up` (make sure you're in the directory you just cloned)
+5. go to localhost:5002
 
-- [ ] allow batch processing 
-- [x] allow users to make a list of files to run batch process on! - GUI
-- [ ] Schema for database  - https://sparrow-data.org/docs/motivation-and-design
-- [ ] Add more testing for data cleaner class
-- [ ] Json export * https://github.com/EarthCubeGeochron/Sparrow/blob/main/backend/sparrow_tests/fixtures/large-test.json
-  - [ ] https://earthchem.org/communities/tephra/
-  - [ ] https://zenodo.org/record/4075613#.YUzSAi1h3zJ
-- [ ] Importer file https://github.com/EarthCubeGeochron/Sparrow-CU-TRaIL/blob/a9089678891d24af1c2440f575d64ac26285377a/plugins/import_reduction_sheet/importer.py#L280
+### How to run the main website
 
-- [] samples schema json - StraboSpot_output file in excel files dir
-  - sample label as sample name
+1. `cd website`
+2. `yarn && yarn dev`
 
-importer schemas
-- [ ] project
-- [ ] sample
-- [ ] session 
-- [ ] instrument
-- [ ] analysis
-- [ ] datum
-- [ ] datafile
-- [ ] sample
+[![Deploy the main website with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FConcord-EPMA%2FConcord-Sparrow%2Ftree%2Fmain%2Fwebsite)
 
+#### How to run importer scripts & GUI (MacOS)
 
-# Deploying Sparrow on a Digital Ocean droplet
-- Sign in with Github
-- Create a team - https://docs.digitalocean.com/products/accounts/teams/quickstart/
-- Go to billing and add PROMO CODE : ACTIVATE60
-- Droplet configuration/type : Basic - Shared CPU - 4 vCPUs - 8 GB - 160 GB - 5 TB - $40/month
-- Open the console online and enter the following commands
+1. `python3 -m venv env`
+2. `source env/bin/activate`
+3. `python3 -m pip install --upgrade pip`
+4. `pip install -r requirements.txt`
+5. `cd importers`
+6. `python /importers/dataCleaner.py`
 
-```shell
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Concord-EPMA/Concord-Sparrow/main/vm-setup.sh)"
-SPARROW_SECRET_KEY=TemporaryKey sparrow up
-```
+#### Current Priority
 
-to connect to sparrow database:
+- [ ] Convert [the current schema](https://docs.google.com/spreadsheets/d/1CC6BIcM31jh5B-xwD7vHvfJxFe8QO-LVyswkqvLjX24/edit#gid=1737684274) to a visual database diagram using a tool like [drawsql](https://drawsql.app/)
+- [ ] Convert database diagrams into SQL and create required tables by using sparrow plugins
+  - put created sql in plugins/backend-plugins directory
+- [ ] Create custom api endpoints by creating sparrow plugins
+  - for help look through the following repositories:
+    - [EarthCubeGeochron/Sparrow](https://github.com/EarthCubeGeochron/Sparrow/blob/78aa58dd4f1fbcd7faaba3cb464f17c9dfec2be1/backend/sparrow/auth/api.py)
+    - [EarthCubeGeochron/Sparrow](https://github.com/EarthCubeGeochron/Sparrow/blob/78aa58dd4f1fbcd7faaba3cb464f17c9dfec2be1/backend/sparrow/users/__init__.py#L5)
+    - [Idzikowski-Casey/Sparrow](https://github.com/Idzikowski-Casey/Sparrow-WiscAr-Example/blob/master/site-content/backend-plugins/__init__.py)
+- [ ] Dockerize website and replace default website by changing `sparrow-config.sh` file
 
-- running locally
-  
-  ```shell
-    psql --username=postgres --host=localhost --port=54321 --dbname=sparrow
-  ```
-
-- running remotely
-  
-  ```shell
-  psql --username=[your-server-login] --host=[your-server-url]  --port=54321 --dbname=sparrow
-
-  Private Key: SSH-key for your server
-  ```
-
-- [ipv4 address from droplet dashboard]:5002  - frontend port number (5002)
-  - i.e '157.245.92.59:5002'
-
-for more info visit - ![sparrow database docs](https://sparrow-data.org/docs/database)
-
-
-# Running Flask Frontend
-
-- Install Flask
-
-  - Set up a local programming environment for python: https://www.digitalocean.com/community/tutorial_series/how-to-install-and-set-up-a-local-programming-environment-for-python-3
-  
-  - Activate the local environment:
-   
-   ``` source t_env/bin/activate ```
-   
-  - Run this command: 
-  
-  ``` source pip install flask ```
+for more help with sparrow visit - [sparrow database docs](https://sparrow-data.org/docs/database)

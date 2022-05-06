@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import tw, { styled, css } from "twin.macro"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import MarketingContainer from "@layouts/MarketingContainer"
 import { Input, Button, LoadingCircle, StyledLink } from "@components"
 import { useForm } from "react-hook-form"
@@ -19,6 +20,7 @@ const schema = yup.object().shape({
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const {
     register,
@@ -28,11 +30,12 @@ export default function Login() {
     mode: "onBlur",
     resolver: yupResolver(schema),
   })
+
   const onSubmit = (data) => {
     setIsLoading(true)
-    console.log(data)
     setTimeout(() => {
       setIsLoading(false)
+      router.push("/")
     }, 1000)
   }
 
@@ -77,13 +80,12 @@ export default function Login() {
               noLabel
               required
             />
-            <small tw="text-red-700">{errors?.password?.password}</small>
+            <small tw="text-red-700">{errors?.password?.message}</small>
           </div>
           <Button
             type="submit"
             tw="flex items-center justify-center"
             disabled={isLoading}
-            variant="primary"
             isLarge
           >
             {isLoading ? <LoadingCircle /> : "Continue with Email"}

@@ -22,6 +22,7 @@ const SEO = {
       },
     ],
   },
+  github: "https://github.com/Concord-EPMA/Concord-Sparrow/tree/main/website",
   additionalLinkTags: [
     {
       rel: "preload",
